@@ -17,7 +17,9 @@ public class Non extends Formule {
 	public Formule substitue(Substitution s) {
 		return new Non(f.substitue(s));
 	}
-	
+	protected Formule negation() {
+		return f;
+	}
 	//retourne l'évaluation de la formule
 	public boolean valeur() throws VariableLibreException {
 		return !f.valeur();

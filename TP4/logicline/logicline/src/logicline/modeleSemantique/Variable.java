@@ -22,7 +22,6 @@ public class Variable extends Formule {
 			return this;
 		}
 	}
-
 	//retourne l'évaluation de la formule
 	public boolean valeur() throws VariableLibreException {
 		throw new VariableLibreException(variable);
