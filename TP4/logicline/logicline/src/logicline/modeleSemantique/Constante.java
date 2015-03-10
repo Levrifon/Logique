@@ -21,7 +21,7 @@ public class Constante extends Formule {
 		}
 	}
 	protected Formule negation() { 
-		return new Constante(!cst);
+		return new Constante(!constante);
 	}
 
 	//retourne l'évaluation de la formule

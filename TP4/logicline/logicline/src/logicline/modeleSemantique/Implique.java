@@ -26,8 +26,16 @@ public class Implique extends Formule {
 		return ((!gauche.valeur() || droite.valeur()));
 	}
 	
+	public Formule entrerNegations() {
+		return new Implique(gauche.entrerNegations(),droite.entrerNegations());
+	}
+	
 	protected Formule supprImplications() {
 		return new Ou(new Non(gauche),droite);
+	}
+	
+	public boolean contientEt() {
+		return gauche.contientEt() || droite.contientEt();
 	}
 	
 	public String toString() {

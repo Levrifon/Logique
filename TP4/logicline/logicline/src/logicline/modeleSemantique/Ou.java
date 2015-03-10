@@ -30,7 +30,31 @@ public class Ou extends Formule {
 	public boolean valeur() throws VariableLibreException {
 		return (gauche.valeur() || droite.valeur());
 	}
+	public Formule entrerNegations() {
+		return new Ou(gauche.entrerNegations(),droite.entrerNegations());
+	}
+	
+	public Formule ougauche (Formule d) {
+		return gauche.ougauche(droite.ougauche(d));
+	}
+	
+	public Formule oudroite (Formule g) {
+		return droite.oudroite(gauche.oudroite(g));
+	}
+	public Formule entrerDisjonctions() {
+		if(gauche.contientEt()) {
+			return gauche.oudroite(droite.entrerDisjonctions());
+		} else if (droite.contientEt()){
+			return droite.entrerDisjonctions().ougauche(gauche);
+		} else {
+			return this;
+		}
+	}
 	public String toString() {
 		return "(" + gauche.toString() + " ∨ " + droite.toString() + ")";
+	}
+	
+	public boolean contientEt() {
+		return gauche.contientEt() || droite.contientEt();
 	}
 }

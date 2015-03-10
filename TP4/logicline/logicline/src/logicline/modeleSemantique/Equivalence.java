@@ -28,7 +28,12 @@ public class Equivalence extends Formule {
 		Implique impD = new Implique(droite,gauche);	/* B => A */	
 		return new Et(impG.supprImplications(),impD.supprImplications());
 	}
-
+	public Formule entrerNegations() {
+		return new Equivalence(gauche.entrerNegations(),droite.entrerNegations());
+	}
+	public boolean contientEt() {
+		return gauche.contientEt() || droite.contientEt();
+	}
 	//retourne l'évaluation de la formule
 	public boolean valeur() throws VariableLibreException {
 		return gauche.valeur() == droite.valeur();

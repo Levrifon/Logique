@@ -31,9 +31,17 @@ public class Et extends Formule{
 	public boolean valeur() throws VariableLibreException {
 		return (gauche.valeur() && droite.valeur());
 	}
+	public Formule entrerNegations() {
+		return new Et(gauche.entrerNegations(),droite.entrerNegations());
+	}
 	public String toString() {
 		return "(" +gauche.toString() + " ∧ " + droite.toString() + ")";
 	}
+	
+	public boolean contientEt() {
+		return true;
+	}
+	
 	
 	
 }

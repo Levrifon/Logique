@@ -20,9 +20,15 @@ public class Non extends Formule {
 	protected Formule negation() {
 		return f;
 	}
+	public boolean contientEt() {
+		return f.contientEt();
+	}
 	//retourne l'évaluation de la formule
 	public boolean valeur() throws VariableLibreException {
 		return !f.valeur();
+	}
+	public Formule entrerNegations() {
+		return f.entrerNegations().negation();
 	}
 	public String toString() {
 		return "(¬" + f.toString() + ")";
